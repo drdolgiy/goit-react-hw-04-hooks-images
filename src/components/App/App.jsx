@@ -1,14 +1,10 @@
 import { React, Component } from "react";
-
-// import { ToastContainer } from "react-toastify";
 import { getImages } from "../API/api-services";
 import { Searchbar } from "../Searchbar/Searchbar";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { Loader } from "../Loader/Loader";
 import { Button } from "../Button/Button";
 import { Modal } from "../Modal/Modal";
-
-// import {Container} from "./App.styled"
 export class App extends Component {
 
   state = {
@@ -28,7 +24,6 @@ export class App extends Component {
     if (prevQuery !== nextQuery ) {
       this.fetchImages()  
     } 
- 
   };
 
   fetchImages = () => { 
