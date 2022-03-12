@@ -37,6 +37,7 @@ export default function App() {
 
         if (images.length === 0) {
           setLoading(false);
+          window.alert('No result!');
           return;
         }
 
@@ -63,7 +64,8 @@ export default function App() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const shouldRenderButton = images.length > 0 && !loading;
+  const shouldRenderButton = images.length > 0 && images.length % 12 === 0 && !loading;
+  
 
   return (
         <div>      
