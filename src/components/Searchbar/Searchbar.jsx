@@ -2,26 +2,27 @@ import { useState } from "react";
 import { ImSearch } from "react-icons/im";
 // import { toast } from "react-toastify";
 // import { Toast } from "react-toastify/dist/components";
-// import propTypes from "prop-types";
+import propTypes from "prop-types";
 import { Header, Form,Input, Button, ButtonLabel } from "./Searchbar.styled";
 
 export default function Searchbar({onSubmit}) {
-    const [image, setImage] = useState('')
+    const [search, setSearch] = useState('');
 
     const handleChange = event => {
-        const searchQuery = event.currentTarget.value.toLowerCase();
-        setImage(searchQuery);
+        const { value } = event.currentTarget;
+        const searchQuery = value.toLowerCase();
+        setSearch(searchQuery);
     };
 
     const handleSubmit = event => {
         event.preventDefault();
 
-        if (image.trim() === '') {
+        if (search.trim() === '') {
             return alert('please, enter search value!');
         };
 
-        onSubmit({image});
-        setImage('');
+        onSubmit(search);
+        setSearch('');
     };
 
     return (
@@ -29,7 +30,7 @@ export default function Searchbar({onSubmit}) {
             <Form onSubmit={handleSubmit}>
                 <Input
                     onChange={handleChange}
-                    value={image}
+                    value={search}
                     type="text"
                     autoComplete="off"
                     autoFocus
@@ -43,8 +44,11 @@ export default function Searchbar({onSubmit}) {
             </Form>
         </Header>
     )
-}
+};
 
+Searchbar.propTypes = {
+    onSubmit: propTypes.func.isRequired
+};
 
 // export class Searchbar extends Component {
 
