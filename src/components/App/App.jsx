@@ -36,7 +36,6 @@ export default function App() {
         );
 
         if (images.length === 0) {
-          alert(`No result!`);
           setLoading(false);
           return;
         }
